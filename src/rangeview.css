@@ -1,0 +1,15 @@
+.range-view-container{
+    width:390px;
+    height:390px;
+    background-color:red;
+}
+
+.range-view-container button{
+    margin:0px;
+    padding:0px;
+    height:30px;
+    width:30px;
+}
+.selected{
+ filter: opacity(.75)
+}
