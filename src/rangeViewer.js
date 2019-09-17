@@ -35,12 +35,11 @@ const SUITS = ['c', 's', 'h', 'd'];
                 }
             }            
         }
-        console.log("buttons are: ", buttonLabelStrings)
 
         this.rangeButtons = buttonLabelStrings.map(str =>{
 
             return (
-                <button onClick={e=>this.handleClick(str)} className={ this.state[str] ? "selected" : 'unselected' }> {str}</button>
+                <button onClick={e=>this.handleClick(str)} key={str} className={ this.state[str] ? "selected" : 'unselected' }> {str}</button>
             )
         })
 

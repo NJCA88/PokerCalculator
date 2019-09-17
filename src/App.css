@@ -30,3 +30,22 @@
   display:flex;
   flex-direction: column;
 }
+
+.results{
+  display:flex;
+  flex-direction: column;
+  width:200px;
+  border: 1px solid black;
+  margin-top:10px;
+  justify-content: left
+}
+.results h4{
+  margin-left:25px;
+  text-align: left;
+}
+.results button{
+  width:100px;
+  height:50px;
+  margin-top:25px;
+  margin-left: 25px;
+}

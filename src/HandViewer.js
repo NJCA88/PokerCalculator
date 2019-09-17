@@ -8,14 +8,12 @@ class HandViewer extends React.Component {
   constructor(props) {
     super(props);
     this.state = { selected: 0 };
-    // this.generateRangeView()
+    this.max = this.props.max
   }
   handleClick = (input) => {
-    // let newSelected = this.state.selected.dup[input] = true
-    // console.log(new)
 
     if (!this.state[input]) {
-        if (this.state.selected === 2) {
+        if (this.state.selected === this.props.max) {
             return;
         }
         this.setState({ [input]: true, selected: this.state.selected + 1 });
@@ -31,11 +29,11 @@ class HandViewer extends React.Component {
         buttonLabelStrings.push(RANKS[rank] + SUITS[suit]);
       }
     }
-    // console.log("buttons are: ", buttonLabelStrings)
 
     this.rangeButtons = buttonLabelStrings.map((str) => {
       return (
         <button
+            key={str}
           onClick={(e) => this.handleClick(str)}
           className={this.state[str] ? 'selected' : 'unselected'}
         >
