@@ -27,16 +27,18 @@ const HAND_STRENGTHS = {
 
 export class RiverTrial {
   constructor(hand1, hand2) {
-    this.hand1 = ['As', 'Ah', 'Kc', '3c', '2c', '7d', 'Th'];
-    this.hand2 = [
-      ['As', 'Ah', '5c', '3c', '2c', '7d', 'Th'],
-      ['As', 'Ah', 'Ac', '3c', '2c', '7d', 'Th']
-    ];
+    // this.hand1 = ['As', 'Ah', 'Kc', '3c', '2c', '7d', 'Th'];
+    // this.hand2 = [
+    //   ['As', 'Ah', '5c', '3c', '2c', '7d', 'Th'],
+    //   ['As', 'Ah', 'Ac', '3c', '2c', '7d', 'Th']
+    // ];
+    this.hand1 = hand1
+    this.hand2 = hand2
     this.pairsHashHand1 = {};
     this.pairsHashHand2 = {};
     this.suitsHashHand1 = {};
     this.suitsHashHand2 = {};
-    this.runTrial();
+    // this.runTrial();
   }
   runTrial = () => {
     // aggregate results and return them
@@ -51,8 +53,9 @@ export class RiverTrial {
         totalTrials += 1;
       }
     }
+    return  h1Victories / totalTrials
 
-    console.log('h1v, total trials: ', h1Victories, totalTrials);
+    // console.log('h1v, total trials: ', h1Victories, totalTrials);
   };
   resetHashes = ()=>{
       this.pairsHashHand1 = {};
