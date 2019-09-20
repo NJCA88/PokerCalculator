@@ -10,25 +10,28 @@ class RangeViewer extends React.Component {
     super(props);
     this.state = {};
     // this.generateRangeView()
+    this.handleClick = this.handleClick.bind(this)
   }
   getRange = () => {
     let range = [];
     let keys = Object.keys(this.state);
+    console.log(this.state)
+    console.log("keys to the truck: ", keys)
+    // let keys = ['KJo', "TT"]
     for (let i = 0; i < keys.length; i++) {
       if (this.state[keys[i]]) {
         range.push(this.state(keys[i]));
       }
     }
+    console.log('getRange range: ', range)
     return range;
   };
   handleClick = (input) => {
-    // let newSelected = this.state.selected.dup[input] = true
-    console.log('clicking');
-    console.log('combos: ', this.getCombos(input));
     if (!this.state[input]) {
       this.setState(
-        { [input]: this.getCombos(input) },
-        this.props.updateRange(this.getRange())
+        { [input]: this.getCombos(input) }, ()=>
+        {   console.log("state: ", this.state);
+            this.props.updateRange(this.getRange())}
       );
     } else {
       this.setState(
@@ -62,6 +65,7 @@ class RangeViewer extends React.Component {
         }
 
     }
+    console.log('getCombos combos: ', combos)
     return combos;
   };
   generateRangeView = () => {
