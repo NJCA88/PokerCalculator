@@ -20,7 +20,8 @@ class RangeViewer extends React.Component {
     // let keys = ['KJo', "TT"]
     for (let i = 0; i < keys.length; i++) {
       if (this.state[keys[i]]) {
-        range.push(this.state(keys[i]));
+          console.log(this.state)
+        range = range.concat(this.state[keys[i]]);
       }
     }
     console.log('getRange range: ', range)

@@ -12,6 +12,9 @@ class App extends React.Component {
     // this.trial.eval();
   }
   runTrial = () => {
+    console.log('running trial')
+    console.log('heroHAnd: ', this.state.heroHand)
+    console.log('villainRange: ', this.state.villainRange)
     this.trial = new RiverTrial();
     let hand = ['As', 'Ah', 'Kc', '3c', '2c', '7d', 'Th'];
     let range = [
