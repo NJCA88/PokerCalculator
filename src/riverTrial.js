@@ -15,13 +15,13 @@ const VALUES = {
 };
 
 const HAND_STRENGTHS = {
-  quads: 1,
+  'quads': 1,
   'full house': 2,
-  flush: 3,
-  straight: 4,
+  'flush': 3,
+  'straight': 4,
   '3 of a kind': 5,
   '2 pair': 6,
-  pair: 7,
+  'pair': 7,
   'high card': 8
 };
 
@@ -34,6 +34,7 @@ export class RiverTrial {
     // ];
     this.hand1 = hand1
     this.hand2 = hand2
+    console.log('constructor: ', hand1, hand2)
     this.pairsHashHand1 = {};
     this.pairsHashHand2 = {};
     this.suitsHashHand1 = {};
@@ -44,13 +45,15 @@ export class RiverTrial {
     // aggregate results and return them
     let h1Victories = 0;
     let totalTrials = 0;
-    for (let i = 0; i < this.hand2.length; i++) {
+    for (let i = 0; i < 1; i++) {
         this.resetHashes()
-      if (this.eval(this.hand1, this.hand2[i]) === 'hand1') {
+      if (this.eval(this.hand1, this.hand2) === 'hand1') {
         h1Victories += 1;
         totalTrials += 1;
+        return "hand1"
       } else {
         totalTrials += 1;
+        return "hand2"
       }
     }
     return  h1Victories / totalTrials
@@ -66,6 +69,7 @@ export class RiverTrial {
       this.sortedH2 = []
   }
   eval(hand1, hand2) {
+      console.log('l 69 ', hand1, hand2 )
     const hand1type = this.getHandStrength(hand1, 1);
     const hand2type = this.getHandStrength(hand2, 2);
 
@@ -87,6 +91,7 @@ export class RiverTrial {
     }
   }
   breakTie(hand1, hand2, handType) {
+      console.log('hand2 is: ', hand2)
     this.sortedH1 = hand1.sort((a, b) => VALUES[a[0]] - VALUES[b[0]]).reverse();
     this.sortedH2 = hand2.sort((a, b) => VALUES[a[0]] - VALUES[b[0]]).reverse();
 
@@ -175,11 +180,12 @@ export class RiverTrial {
     return;
   };
   getHandStrength(hand) {
-    // console.log('hand is: ', hand);
+    console.log('hand is: ', hand);
     const pairsHash = {};
     const suitsHash = {};
     const ranks = [];
     let values = [];
+    console.log('l 183: ', hand)
     for (var card_idx = 0; card_idx < hand.length; card_idx++) {
       pairsHash[hand[card_idx][0]] = pairsHash[hand[card_idx][0]] + 1 || 1;
       suitsHash[hand[card_idx][1]] = suitsHash[hand[card_idx][1]] + 1 || 1;
